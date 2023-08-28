@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         GCP_SERVICE_ACCOUNT = credentials('SERVICE_ACCOUNT_GCP')
+        GCP_SSH_KEY = credentials('GCP_PRIVATE_KEY')
     }
     
     stages {
@@ -22,6 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
+                sh 'kubectl apply -f .devops/deployment.yaml'
             }
         }
     }
