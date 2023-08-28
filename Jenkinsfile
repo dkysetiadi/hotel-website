@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         GCP_SERVICE_ACCOUNT = credentials('SERVICE_ACCOUNT_GCP')
-        GCP_SSH_KEY = credentials('GCP_PRIVATE_KEY')
     }
     
     stages {
