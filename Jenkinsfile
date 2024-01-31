@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        SERVICE_ACCOUNT_GCP = credentials('SERVICE_ACCOUNT_GCP')
+        SERVICE_ACCOUNT_GCP = credentials('GCP_SERVICE_ACCOUNT')
     }
     stages {
         stage('Build') {
