@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hotel-website
+spec:
+  selector:
+    matchLabels:
+      app: hotel-website
+  template:
+    metadata:
+      labels:
+        app: hotel-website
+    spec:
+      containers:
+      - name: hotel-website
+        image: gcr.io/ferrous-module-395010/hotel-website:tagnumber
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 80
