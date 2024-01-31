@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'docker build -t gcr.io/main-presence-408704/hotel-website:${BUILD_NUMBER} .'   
+                echo 'Building..' 
             }
         }
         stage('Push') {
