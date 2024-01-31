@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        GCP_SERVICE_ACCOUNT = credentials('SERVICE_ACCOUNT_GCP')
+        SERVICE_ACCOUNT_GCP = credentials('SERVICE_ACCOUNT_GCP')
     }
     stages {
         stage('Build') {
@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'cat "$GCP_SERVICE_ACCOUNT" | docker login -u _json_key --password-stdin https://gcr.io'  
+                sh 'cat "$SERVICE_ACCOUNT_GCP" | docker login -u _json_key --password-stdin https://gcr.io'  
                 sh 'docker push gcr.io/main-presence-408704/mediplus:${BUILD_NUMBER}'
             }
         }
