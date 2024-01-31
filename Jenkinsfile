@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..' 
+                sh 'docker build -t gcr.io/main-presence-408704/mediplus:${BUILD_NUMBER} .'
             }
         }
         stage('Push') {
