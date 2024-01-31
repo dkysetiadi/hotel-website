@@ -11,9 +11,9 @@ pipeline {
                 sh 'docker build -t gcr.io/main-presence-408704/hotel-website:${BUILD_NUMBER} .'
             }
         }
-        stage('Test') {
+        stage('Push') {
             steps {
-                echo 'Testing..'
+                echo 'Push..'
                 sh 'cat "$SERVICE_ACCOUNT_GCP" | docker login -u _json_key --password-stdin https://gcr.io'  
                 sh 'docker push gcr.io/main-presence-408704/hotel-website:${BUILD_NUMBER}'
             }
@@ -21,6 +21,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'docker docker run --name hotel-website --rm -d -p 80:80 hotel-website:${BUILD_NUMBER}'
+                # sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
+                # sh 'kubectl apply -f .devops/deployment.yaml'
+                # sh 'kubectl apply -f .devops/service.yaml'
             }
         }
     }
