@@ -22,9 +22,9 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh 'docker docker run --name hotel-website --rm -d -p 80:80 hotel-website:${BUILD_NUMBER}'
-                # sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
-                # sh 'kubectl apply -f .devops/deployment.yaml'
-                # sh 'kubectl apply -f .devops/service.yaml'
+                // sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
+                // sh 'kubectl apply -f .devops/deployment.yaml'
+                // sh 'kubectl apply -f .devops/service.yaml'
             }
         }
     }
