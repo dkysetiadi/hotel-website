@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 sh 'cat "$SERVICE_ACCOUNT_GCP" | docker login -u _json_key --password-stdin https://gcr.io'  
-                sh 'docker run -d -p 80:80 --name hotel-website hotel-website:${BUILD_NUMBER}'
+                sh 'kubectl get nodes'
                 // sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
                 // sh 'kubectl apply -f .devops/deployment.yaml'
                 // sh 'kubectl apply -f .devops/service.yaml'
