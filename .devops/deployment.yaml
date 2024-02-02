@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: hotel-website
-        image: gcr.io/ferrous-module-395010/hotel-website:tagnumber
+        image: gcr.io/main-presence-408704/hotel-website:tagnumber
         resources:
           limits:
             memory: "128Mi"
