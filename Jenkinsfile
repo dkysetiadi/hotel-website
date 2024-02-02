@@ -21,9 +21,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                // sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
-                // sh 'kubectl apply -f .devops/deployment.yaml'
-                // sh 'kubectl apply -f .devops/service.yaml'
+                sh "sed -i 's/tagnumber/${BUILD_NUMBER}/g' .devops/deployment.yaml"
+                sh 'kubectl apply -f .devops/deployment.yaml'
+                sh 'kubectl apply -f .devops/service.yaml'
             }
         }
     }
